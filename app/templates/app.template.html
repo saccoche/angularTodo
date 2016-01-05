@@ -1,0 +1,10 @@
+<h1>TODO LIST</h1>
+<div *ngFor="#todo of todoList">
+    <todo [todo]="todo"></todo>
+</div>
+<div>
+    <button (click)="addTodo()">add</button>
+</div>
+<div class="footer">
+    {{cpt}} remaining tasks
+</div>

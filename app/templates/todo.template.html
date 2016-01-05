@@ -1,0 +1,3 @@
+<div class="todo-box">
+    <input (input)="refreshCounter()" type="checkbox" [(ngModel)]="todo.done" value="test"/> <span [class.done]="todo.done">{{todo.text}}</span>
+</div>
