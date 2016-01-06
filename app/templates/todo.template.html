@@ -1,3 +1,5 @@
 <div class="todo-box">
-    <input (input)="refreshCounter()" type="checkbox" [(ngModel)]="todo.done" value="test"/> <span [class.done]="todo.done">{{todo.text}}</span>
+    <input (input)="refreshCounter()" type="checkbox" [(ngModel)]="todo.done" value="test"/>
+    <span [class.done]="todo.done" *ngIf="status == 'view'" (click)="switchState()">{{todo.text}}</span>
+    <input type="text" [(ngModel)]="todo.text" *ngIf="status == 'edit'" (keyup.enter)="switchState()" (blur)="switchState()"/>
 </div>
