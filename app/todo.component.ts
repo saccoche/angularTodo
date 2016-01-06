@@ -1,8 +1,6 @@
-import {Component} from "angular2/core";
+import {Component, OnInit} from "angular2/core";
 import {Todo} from "./todo";
-/**
- * Created by Vincent on 05/01/2016.
- */
+import {TodoStatusEnum} from "./todo-status.enum";
 
 @Component({
     selector:'todo',
@@ -10,8 +8,26 @@ import {Todo} from "./todo";
     styles:['.done{text-decoration:line-through;}.todo-box{border 1px black;}'],
     inputs:['todo'],
 })
-export class TodoComponent {
+export class TodoComponent implements OnInit{
+
+    ngOnInit(){
+        if(this.todo.text == '') {
+            this.status = TodoStatusEnum[TodoStatusEnum.edit];
+        } else {
+            this.status = TodoStatusEnum[TodoStatusEnum.view];
+        }
+    }
 
     public todo:Todo;
+    public status:string;
+
+    switchState(){
+        if(this.status == TodoStatusEnum[TodoStatusEnum.edit]) {
+            this.status = TodoStatusEnum[TodoStatusEnum.view];
+        } else {
+            this.status = TodoStatusEnum[TodoStatusEnum.edit];
+        }
+    }
+
 
 }
